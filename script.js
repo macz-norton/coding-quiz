@@ -23,8 +23,6 @@ var btnA1
 var btnA2
 var btnA3
 var vtnQA
-var initialsInput = document.createElement("input");
-var btnSubmit =
 
 var questions = [
     {
@@ -36,6 +34,7 @@ var questions = [
         correctAnswer:
     }
 ]
+var secondsLeft = 75;
 
 function setTimer() {
     var timerInterval = setInterval(function() {
@@ -46,17 +45,20 @@ function setTimer() {
             clearInterval(timerInterval);
             endQuiz()
         }
-    })
+    }, 1000);
 }
 
 function newQuestion() {
 
-    
+
 }
 
 function endQuiz() {
     h2El.textContent = "All done!"
-    pSubtitle.textContent = "Your final score is " + score;
-    initialsInput = 
-    btnSubmit =
+    var pSubtitle.textContent = "Your final score is " + score;
+    var initialsInput = document.createElement("input");
+    var btnSubmit = document.createElement("button");
+
+    mainEl.appendChild(initialsInput);
+    mainEl.appendChild(btnSubmit);
 }
