@@ -1,3 +1,38 @@
+// Player clicks `startBtn`
+//`startBtn` has a hover and active state
+
+// when game starts, `question` and 4 `answerBtn`
+// when player clicks correct answer, moves to `nextStep` to next question
+// when player clicks correct answer, moves to `nextStep` and score decreases by 10
+
+var questions = [
+    {
+        question: "what is the best day?";
+        answer1: "Monday",
+        answer2: "Wednesday",
+        answer3: "Friday",
+        answer4: "Saturday",
+        correctAnswer: "Friday"
+    }
+]
+
+var index;
+function startQuiz() { 
+	index = 0;
+    startBtn.addEventListener("click", function() {
+        if 
+    })
+    
+}
+function nextQuestion() {
+	// Increase your question pointer by one.
+	index++;
+    // Display the current question
+    nextBtn.addEventListener("click", function() {
+        if (answer[i] === correctAnswer)
+    })
+}
+
 // GIVEN I am taking a code quiz
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
@@ -12,6 +47,7 @@
 
 var body = document.body;
 
+var mainEl = document.getElementById("main");  
 var nav = document.createElement("nav");
 var liHighScores = document.createElement("li");
 var liTimer = document.createElement("li");
