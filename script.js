@@ -1,6 +1,7 @@
-// Display-specific variables
-var showEl = document.querySelector(".show");
-var hideEl = document.querySelector(".hide");
+// Display-specific variable
+var hiddenEl = document.querySelector(".hide")
+var displayedEl = document.querySelector(".display")
+var display = "show";
 
 // Variables for header
 var timerEl = document.getElementById("scoreTimer");
@@ -38,52 +39,70 @@ var questionIndex = 0;
 var questions = [
     {
         question: "What is the best color?",
-        choices = ["red", "blue", "best", "purple"],
-        correctAnswer = choices[2]
+        choices: ["red", "blue", "best", "purple"],
+        correctAnswer: choices[2]
     },
     {
         question: "What is the worst color?",
-        choices = ["red", "worst", "green", "purple"],
-        correctAnswer = choices[1]
+        choices: ["red", "worst", "green", "purple"],
+        correctAnswer: choices[1]
     },
     {
         question: "What is the coolest color?",
-        choices = ["coolest", "blue", "green", "purple"],
-        correctAnswer = choices[0]
+        choices: ["coolest", "blue", "green", "purple"],
+        correctAnswer: choices[0]
     }
 ]
 
-function startQuiz(){
+// Function displays any `displayedEl`
+function display() {
 
-    introEl.textContent = "";
+    displayedEl.style.display = "block"
+
+}
+// Function hides any `hiddenEl`
+function hide() {
+
+    hiddenEl.style.display = "none";
 
 }
 
+// Function to hide the `quizIntroEl`
+function quizIntroDisplay() {
 
-function incorrectAnswer(){
-    secondsLeft--5;
-}
+    if (mode === "show"){
 
-function answerStatus(){
-    // If user answers correctly
-    if (correctAnswer === choices[i]) {
-        // Add text content to tell user it's incorrect
-        answerStatusEl.innerHTML == "Correct!";
+        mode === "hide";
+        quizIntroEl.setAttribute("class", "hide");
 
-    // If user answer incorrectly
     } else {
-        // Add text content to tell user it's incorrect
-        answerStatusEl.innerHTML == "Incorrect";
-        incorrectAnswer();
+
+        mode === "show";
+        quizIntroEl.setAttribute("class", "show");
+
     }
+
 }
 
+// Function to show the `quizIntroEl`
+function quizQuestionDisplay() {
 
-.addEventListener()
+    if (mode === "hide"){
 
+        mode === "show";
+        quizInProgressEl.setAttribute("class", "show");
 
+    } else {
 
-function startScoreTimer(){
+        mode === "hide";
+        quizInProgressEl.setAttribute("class", "hide");
+
+    }
+
+}
+
+// Function to start the score timer counting down from 100
+function startScoreTimer() {
 
     var timerInterval = setInterval(function() {
         secondsLeft--;
@@ -95,54 +114,92 @@ function startScoreTimer(){
         }
 
     }, 1000);
-}
-
-function nextQuestion(){
-
-    // change to next Question
 
 }
 
-function endQuiz(){
+display();
+hiddenEl();
 
-    if (!(i < questions.length)) {
+// When player clicks the `quizStartBtn,` run three functions to:
+// hide the `quizIntroEl`
+quizStartBtn.addEventListener("click", quizIntroDisplay());
+// show the `quizInProgress`
+quizStartBtn.addEventListener("click", quizQuestionsDisplay());
+// start the `timerInterval`
+quizStartBtn.addEventListener("click", startScoreTimer());
 
-    }
-    else (timer=0) {
+
+// function incorrectAnswer(){
+//     secondsLeft--5;
+// }
+
+// function answerStatus(){
+//     // If user answers correctly
+//     if (correctAnswer === choices[i]) {
+//         // Add text content to tell user it's incorrect
+//         answerStatusEl.innerHTML == "Correct!";
+
+//     // If user answer incorrectly
+//     } else {
+//         // Add text content to tell user it's incorrect
+//         answerStatusEl.innerHTML == "Incorrect";
+//         incorrectAnswer();
+//     }
+// }
+
+
+
+
+
+
+
+
+// function nextQuestion(){
+
+//     // change to next Question
+
+// }
+
+// function endQuiz(){
+
+//     if (!(i < questions.length)) {
+
+//     }
+//     else (timer=0) {
             
-    }
-    else{
+//     }
+//     else{
 
-    }
+//     }
 
-    clearInterval()
+//     clearInterval()
 
-    h2El.textContent = "All done!"
-    var pSubtitle.textContent = "Your final score is " + score;
+//     h2El.textContent = "All done!"
+//     var pSubtitle.textContent = "Your final score is " + score;
 
-}
+// }
 
-function saveHighScore() {
-
-
-}
+// function saveHighScore() {
 
 
-function setTimer() {
-    var timerInterval = setInterval(function() {
-        secondsLeft--;
-        liTimer.textContent = "Time: " + secondsLeft;
-
-        if(secondsLeft === 0) {
-            clearInterval(timerInterval);
-            endQuiz()
-        }
-    }, 1000);
-}
-
-function newQuestion() {
+// }
 
 
-}
+// function setTimer() {
+//     var timerInterval = setInterval(function() {
+//         secondsLeft--;
+//         liTimer.textContent = "Time: " + secondsLeft;
 
-startBtn.addEventListener("click", startQuiz){}
+//         if(secondsLeft === 0) {
+//             clearInterval(timerInterval);
+//             endQuiz()
+//         }
+//     }, 1000);
+// }
+
+// function newQuestion() {
+
+
+// }
+
+// startBtn.addEventListener("click", startQuiz){}
