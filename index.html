@@ -5,63 +5,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Quiz</title>
+    <!-- Link to CSS reset stylesheet -->
     <link rel="stylesheet" href="assets/normalize.css">
+    <!-- Link to CSS stylesheet -->
     <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
+    <!-- Header with link to the High Scores page and score timer  -->
     <header>
-        <h3><a href="#">View Highscores</a></h3>
+        <h3><a href="#">View High Scores</a></h3>
         <h3 id="scoreTimer">Timer: </h3>
     </header>
     
+    <!-- Main div includes each of the quiz pages that are shown / hidden -->
     <main>
 
+        <!-- Quiz intro page where player clicks Start Quiz button to begin quiz and score timer -->
         <div id="quizIntro">
             <h1>Coding Quiz Challenge</h1>
             <p>Try to answer the following code-related questions within the time limit.</p>
             <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <!-- Button for player to start quiz -->
             <button id="quizStartBtn">Start Quiz</button>
         </div>
 
+        <!-- Quiz question and answer page where player selects answer button and answer status shown -->
         <div id="quizInProgress"></div>
+            <!-- Question text -->
             <h2 id="questionText"></h2>
+            <!-- First answer choice -->
             <div>
                 <button id="answer1"></button>
             </div>
+            <!-- Second answer choice -->
             <div>
                 <button id="answer2"></button>
             </div>
+            <!-- Third answer choice -->
             <div>
                 <button id="answer3"></button>
             </div>
+            <!-- Fourth answer choice -->
             <div>
                 <button id="answer4"></button>
             </div>
+            <!-- Answer status appears - either correct or incorrect -->
             <div>
                 <h3 id="answerStatus"></h3>
             </div>
 
         </div>
 
+        <!-- Quiz completion page where player's score is show and they're prompted to enter their initials -->
         <div class="quizComplete">
             <h2>All done!</h2>
+            <!-- Player's quiz score -->
             <p id="finalScore"></p>
+            <!-- Form for player to enter initials to submit to leaderboard -->
             <form>
                 Enter initials:<input type="text" id="initials">
-                <button id="scoreSubmitBtn">Submit</button>
+                <button id="scoreSubmitBtn">Submit Score</button>
             </form>
         </div>
 
+        <!-- Quiz leaderboard with submitted high scores -->
         <div id="leaderboard">
             <h2>High Scores</h2>
             <div id="playerScores"></div>
+            <!-- Button to redirect to quiz intro page -->
             <button id="goBackBtn">Go Back</button>
+            <!-- Button to clear the leaderboard of any high scores -->
             <button id="clearScoresBtn">Clear High Scores</button>
         </div>
 
     </main>
 
+    <!-- Link to JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
