@@ -22,7 +22,7 @@
     <main>
 
         <!-- Quiz intro page where player clicks Start Quiz button to begin quiz and score timer -->
-        <div id="quizIntro">
+        <div class="show" id="quizIntro">
             <h1>Coding Quiz Challenge</h1>
             <p>Try to answer the following code-related questions within the time limit.</p>
             <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
@@ -31,7 +31,7 @@
         </div>
 
         <!-- Quiz question and answer page where player selects answer button and answer status shown -->
-        <div id="quizInProgress"></div>
+        <div class="hide" id="quizInProgress"></div>
             <!-- Question text -->
             <h2 id="questionText"></h2>
             <!-- First answer choice -->
@@ -58,7 +58,7 @@
         </div>
 
         <!-- Quiz completion page where player's score is show and they're prompted to enter their initials -->
-        <div class="quizComplete">
+        <div class="hide" id="quizComplete">
             <h2>All done!</h2>
             <!-- Player's quiz score -->
             <p id="finalScore"></p>
@@ -70,7 +70,7 @@
         </div>
 
         <!-- Quiz leaderboard with submitted high scores -->
-        <div id="leaderboard">
+        <div class="hide" id="leaderboard">
             <h2>High Scores</h2>
             <div id="playerScores"></div>
             <!-- Button to redirect to quiz intro page -->
