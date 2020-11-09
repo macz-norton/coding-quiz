@@ -1,3 +1,67 @@
+var score;
+var startBtn = document.getElementById("start");
+var questionIndex = 0;
+
+var questions = [
+    {
+        question: "What is the best color?",
+        choices = ["red", "blue", "green", "purple"],
+        correctAnswer = choices[3]
+    
+    }
+]
+
+
+function startQuiz(){
+
+}
+
+startBtn.addEventListener("click", startQuiz) {
+
+}
+
+function answerCorrectly(){
+
+}
+
+function answerIncorrectly(){
+
+}
+
+.addEventListener()
+
+function setScoreTimer(){
+
+
+}
+
+function startScoreTimer(){
+
+    setInterval();
+    score--;
+}
+
+function moveToNextQuestion(){
+
+    questionIndex++;
+
+}
+
+function finishQuiz(){
+
+
+
+}
+// set interval to do the timed functionality
+
+// clearInterval to stop the timeout
+
+// what data do we need?
+// timeLeft / score (convert to score at end of game)
+// questions
+
+
+
 // Player clicks `startBtn`
 //`startBtn` has a hover and active state
 
