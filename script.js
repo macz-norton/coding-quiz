@@ -5,25 +5,33 @@
 // when player clicks correct answer, moves to `nextStep` to next question
 // when player clicks correct answer, moves to `nextStep` and score decreases by 10
 
+var index;
+var score = document.querySelector("#timer");
+var startBtn = document.querySelector("#start");
+var = document.querySelector("#intro");
+
 var questions = [
     {
-        question: "what is the best day?";
-        answer1: "Monday",
-        answer2: "Wednesday",
-        answer3: "Friday",
-        answer4: "Saturday",
+        question: "what is the best day?",
+        choices: ["Monday", "Wednesday",]
         correctAnswer: "Friday"
     }
 ]
+// if correctAnswer = 
+// call function to run through questions 
+.this.
+startBtn.addEventListener("click", function() {
+    startQuiz();
+}
 
-var index;
 function startQuiz() { 
-	index = 0;
-    startBtn.addEventListener("click", function() {
-        if 
+    intro.textContent = " ";
+    questionEl = document.createElement("question")
     })
     
 }
+
+// get question
 function nextQuestion() {
 	// Increase your question pointer by one.
 	index++;
@@ -33,6 +41,13 @@ function nextQuestion() {
     })
 }
 
+// get answer
+
+// timer
+
+// quiz ends
+
+// save highscore
 // GIVEN I am taking a code quiz
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
