@@ -8,40 +8,42 @@
 </head>
 
 <body>
-    <header></header>
-    <h3><a href="#">View Highscores</a></h3>
-    <h3 class="timer"></h3>
+    <header>
+        <h3><a href="#">View Highscores</a></h3>
+        <h3 id="scoreTimer">Timer: </h3>
+    </header>
 
     <div class="quizIntro">
         <h1>Coding Quiz Challenge</h1>
         <p>
             Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!
         </p>
-        <button id="start">Start Quiz</button>
+        <button id="quizStartBtn">Start Quiz</button>
     </div>
 
-    <div class ="quiz"></div>
-        <h2 class="questionText"></h2>
-        <button class="btn1"></button>
-        <button class="btn2"></button>
-        <button class="btn3"></button>
-        <button class="btn4"></button>
-        <div id="answerStatus"></div>
+    <div id="quizInProgress"></div>
+        <h2 id="questionText"></h2>
+        <button id="answer1"></button>
+        <button id="answer2"></button>
+        <button id="answer3"></button>
+        <button id="answer4"></button>
+        <h3 id="answerStatus"></h3>
     </div>
 
     <div class="quizComplete">
         <h2>All done!</h2>
-        <p class="finalScore"></p>
+        <p id="finalScore"></p>
         <form>
-            <input type="text" id="initials">Enter initials:</input>
-            <button>Submit</button>
+            Enter initials:<input type="text" id="initials">
+            <button id="scoreSubmitBtn">Submit</button>
         </form>
     </div>
 
-    <div class="leaderboard">
-        <table>
-            
-        </table>
+    <div id="leaderboard">
+        <h2>High Scores</h2>
+        <div id="playerScores"></div>
+        <button id="goBackBtn">Go Back</button>
+        <button id="clearScoresBtn">Clear High Scores</button>
     </div>
 
     <script src="script.js"></script>
