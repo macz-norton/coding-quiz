@@ -11,17 +11,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-button {
-    background-color: var(--darkblue);
-    color: whitesmoke;
-    border-radius: 5px;
-    border-color: var(--darkblue);
-}
-
-button:focus {
-    background-color: var(--mediumblue);
-}
-
 header {
     display: flex;
     justify-content: space-between;
