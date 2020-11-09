@@ -100,10 +100,27 @@ function quizQuestionDisplay() {
 
     } else {
 
-        mode === "hide";
+        display === "hide";
         quizInProgressEl.setAttribute("class", "hide");
 
     }
+
+}
+
+// Function to display the `questionStatement`
+function displayQuestionStatement() {
+
+    questionTextEl.innerHTML = questionStatement;
+
+}
+
+// Function to display the `answerChoices`
+function displayAnswerChoices() {
+
+    answer1Btn.innerHTML = answerChoices[0];
+    answer2Btn.innerHTML = answerChoices[1];
+    answer3Btn.innerHTML = answerChoices[2];
+    answer4Btn.innerHTML = answerChoices[3];
 
 }
 
@@ -116,27 +133,24 @@ function startScoreTimer(event) {
 
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
-            endQuiz();
+            // endQuiz();
         }
 
     }, 1000);
 
 }
 
-function displayQuestionStatement() {
-
-    
-
-}
-
-// When player clicks the `quizStartBtn,` run three functions to:
+// When player clicks the `quizStartBtn,` run the functions to:
 // hide the `quizIntroEl`
 quizStartBtn.addEventListener("click", quizIntroDisplay());
 // show the `quizInProgress`
-quizStartBtn.addEventListener("click", quizQuestionsDisplay());
+quizStartBtn.addEventListener("click", quizQuestionDisplay());
+// display the `questionStatement`
+quizStartBtn.addEventListener("click", displayQuestionStatement());
+// display the 'answerChoices`
+quizStartBtn.addEventListener("click", displayAnswerChoices());
 // start the `timerInterval`
 quizStartBtn.addEventListener("click", startScoreTimer());
-
 
 
 
