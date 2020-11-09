@@ -1,6 +1,7 @@
 var score;
-var startBtn = document.getElementById("start");
+var startBtnEl = document.getElementById("start");
 var questionIndex = 0;
+var answerStatusEl = document.getElementById("answerStatus");
 
 var questions = [
     {
@@ -20,20 +21,23 @@ startBtn.addEventListener("click", startQuiz) {
 
 }
 
-function answerCorrectly(){
+function answerStatus(){
 
-}
+    if (correctAnswer === choices[i]) {
 
-function answerIncorrectly(){
+        answerStatusEl.innerHTML == "Correct!";
+
+    } else {
+
+        answerStatusEl.innerHTML == "Incorrect";
+
+    }
 
 }
 
 .addEventListener()
 
-function setScoreTimer(){
-
-
-}
+var setScoreTimer = 75;
 
 function startScoreTimer(){
 
