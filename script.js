@@ -1,9 +1,9 @@
-var score = document.querySelector("#timer");
+var timerEl = document.querySelector("#timer");
 var startBtnEl = document.getElementById("start");
 var answerStatusEl = document.getElementById("answerStatus");
 var introEl = document.querySelector("#intro");
 
-var setScoreTimer = 75;
+var secondsLeft = 100;
 var questionIndex = 0;
 
 var questions = [
@@ -32,7 +32,7 @@ function startQuiz(){
 
 
 function incorrectAnswer(){
-    score--5;
+    secondsLeft--5;
 }
 
 function answerStatus(){
@@ -56,8 +56,16 @@ function answerStatus(){
 
 function startScoreTimer(){
 
-    setInterval();
-    score--;
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timerEl.textContent = "Score Timer: " + secondsLeft;
+
+        if(secondsLEft === 0) {
+            clearInterval(timerInterval);
+            endQuiz();
+        }
+
+    }, 1000);
 }
 
 function nextQuestion(){
@@ -82,7 +90,7 @@ function endQuiz(){
 
     h2El.textContent = "All done!"
     var pSubtitle.textContent = "Your final score is " + score;
-    
+
 }
 
 function saveHighScore() {
