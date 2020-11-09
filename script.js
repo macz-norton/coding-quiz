@@ -20,7 +20,7 @@ var answer4Btn = document.getElementById("answer4");
 var answerStatusEl = document.getElementById("answerStatus");
 
 // Variables for quiz completion
-var quizCompleteEl = dopcument.getElementById("quizComplete");
+var quizCompleteEl = document.getElementById("quizComplete");
 var finalScoreEl = document.getElementById("finalScore");
 var initialsEl = document.getElementById("initials");
 var scoreSubmitBtn = document.getElementById("scoreSubmitBtn");
@@ -31,28 +31,54 @@ var playerScoresEl = document.getElementById("playerScores");
 var goBackBtn = document.getElementById("gotBackBtn");
 var clearScoresBtn = document.getElementById("clearScoresBtn");
 
-// Variables for timer and question index
+// Variable for timer
 var secondsLeft = 100;
-var questionIndex = 0;
+console.log("Score timer seconds left:")
+console.log(secondsLeft);
 
-//Variables for questions with answers and correct answers
-var questions = [
+// Variable for question index
+var questionIndex = 0;
+console.log("Question index:");
+console.log(questionIndex);
+
+// Variable for questions - with answers and correct answers
+var questionsObject = [
     {
-        question: "What is the best color?",
-        choices: ["red", "blue", "best", "purple"],
-        correctAnswer: choices[2]
+        "question": "What is the best color?",
+        "choices": ["1. red", "2. blue", "3. best", "4. purple"],
+        "correctAnswer": 2
     },
     {
-        question: "What is the worst color?",
-        choices: ["red", "worst", "green", "purple"],
-        correctAnswer: choices[1]
+        "question": "What is the worst color?",
+        "choices": ["1. red", "2. worst", "3. green", "4. purple"],
+        "correctAnswer": 1
     },
     {
-        question: "What is the coolest color?",
-        choices: ["coolest", "blue", "green", "purple"],
-        correctAnswer: choices[0]
+        "question": "What is the coolest color?",
+        "choices": ["1. coolest", "2. blue", "3. green", "4. purple"],
+        "correctAnswer": 0
     }
 ]
+
+console.log("Questions Object:")
+console.log(questionsObject);
+
+// Variable for question statement
+var questionStatement = questionsObject[questionIndex]["question"];
+console.log("Question Statement:");
+console.log(questionStatement);
+
+// Variable for answer choices
+var answerChoices = questionsObject[questionIndex]["choices"];
+console.log("Answer Choices:");
+console.log(answerChoices);
+
+
+
+
+
+
+
 
 // Function displays any `displayedEl`
 function display() {
