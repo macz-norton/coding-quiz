@@ -1,7 +1,7 @@
 // Display-specific variable
 var hiddenEl = document.querySelector(".hide")
 var displayedEl = document.querySelector(".display")
-var display = "show";
+var display = "display";
 
 // Variables for header
 var timerEl = document.getElementById("scoreTimer");
@@ -73,38 +73,18 @@ var answerChoices = questionsObject[questionIndex]["choices"];
 console.log("Answer Choices:");
 console.log(answerChoices);
 
-
-
-
-
-
-
-
-// Function displays any `displayedEl`
-function display() {
-
-    displayedEl.style.display = "block"
-
-}
-// Function hides any `hiddenEl`
-function hide() {
-
-    hiddenEl.style.display = "none";
-
-}
-
 // Function to hide the `quizIntroEl`
 function quizIntroDisplay() {
 
-    if (mode === "show"){
+    if (display === "display"){
 
-        mode === "hide";
+        display === "hide";
         quizIntroEl.setAttribute("class", "hide");
 
     } else {
 
-        mode === "show";
-        quizIntroEl.setAttribute("class", "show");
+        display === "display";
+        quizIntroEl.setAttribute("class", "display");
 
     }
 
@@ -113,10 +93,10 @@ function quizIntroDisplay() {
 // Function to show the `quizIntroEl`
 function quizQuestionDisplay() {
 
-    if (mode === "hide"){
+    if (display === "hide"){
 
-        mode === "show";
-        quizInProgressEl.setAttribute("class", "show");
+        display === "display";
+        quizInProgressEl.setAttribute("class", "display");
 
     } else {
 
@@ -128,13 +108,13 @@ function quizQuestionDisplay() {
 }
 
 // Function to start the score timer counting down from 100
-function startScoreTimer() {
+function startScoreTimer(event) {
 
-    var timerInterval = setInterval(function() {
+    var timerInterval = setInterval(function(event) {
         secondsLeft--;
         timerEl.textContent = "Score Timer: " + secondsLeft;
 
-        if(secondsLEft === 0) {
+        if(secondsLeft === 0) {
             clearInterval(timerInterval);
             endQuiz();
         }
@@ -143,8 +123,11 @@ function startScoreTimer() {
 
 }
 
-display();
-hiddenEl();
+function displayQuestionStatement() {
+
+    
+
+}
 
 // When player clicks the `quizStartBtn,` run three functions to:
 // hide the `quizIntroEl`
@@ -153,6 +136,8 @@ quizStartBtn.addEventListener("click", quizIntroDisplay());
 quizStartBtn.addEventListener("click", quizQuestionsDisplay());
 // start the `timerInterval`
 quizStartBtn.addEventListener("click", startScoreTimer());
+
+
 
 
 // function incorrectAnswer(){
