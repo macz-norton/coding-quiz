@@ -1,11 +1,25 @@
+:root {
+    --darkblue: #034AA6;
+    --mediumblue: #0476D9;
+    --lightblue: #05AFF2;
+    --mustard: #F2B705;
+    --orange: #F29F05;
+}
+
 * {
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 button {
-    background-color: lightskyblue;
-    border-color: darkblue;
+    background-color: var(--darkblue);
+    color: whitesmoke;
+    border-radius: 5px;
+    border-color: var(--darkblue);
+}
+
+button:focus {
+    background-color: var(--mediumblue);
 }
 
 header {
@@ -21,3 +35,8 @@ main {
     width: 50%;
 }
 
+h1,
+h2,
+h3 {
+    color: var(--darkblue);
+}
