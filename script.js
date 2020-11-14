@@ -38,79 +38,61 @@ var questionsObject = [
     {
         "question": "What is the best color?",
         "choices": ["1. red", "2. blue", "3. best", "4. purple"],
-        "correctAnswer": 2
+        "correctAnswer": "3. best"
     },
     {
-        "question": "What is the worst color?",
-        "choices": ["1. red", "2. worst", "3. green", "4. purple"],
-        "correctAnswer": 1
+        "question": "Who?",
+        "choices": ["1. bob", "2. joe", "3. mary", "4. jill"],
+        "correctAnswer": "2. joe"
     },
     {
-        "question": "What is the coolest color?",
-        "choices": ["1. coolest", "2. blue", "3. green", "4. purple"],
-        "correctAnswer": 0
+        "question": "How?",
+        "choices": ["1. car", "2. boat", "3. bus", "4. bike"],
+        "correctAnswer": "1. car"
     }
 ]
 
 console.log("Questions Object:")
 console.log(questionsObject);
 
-// Variable for question statement
-var questionStatement = questionsObject[questionIndex]["question"];
-console.log("Question Statement:");
-console.log(questionStatement);
+// Function to displays the `questionStatement` and `answerChoices
+function displayQuestions() {
 
-// Variable for answer choices
-var answerChoices = questionsObject[questionIndex]["choices"];
-console.log("Answer Choices:");
-console.log(answerChoices);
+    quizIntroEl.removeAttribute("class", "display");
+    quizInProgressEl.removeAttribute("class", "hide");
 
-// Variable for correct answer
-var correctAnswer = questionsObject[questionIndex]["correctAnswer"];
-console.log("Correct Answer:");
-console.log(correctAnswer);
-
-// Function to hide the `quizIntroEl`
-function quizIntroDisplay() {
-
-        quizIntroEl.setAttribute("class", "hide");
-
-}
-
-// Function to show the `quizIntroEl`
-function quizQuestionDisplay() {
-
-        quizInProgressEl.setAttribute("class", "display");
-
-}
-
-// Function to display the `questionStatement`
-function displayQuestionStatement() {
+    quizIntroEl.setAttribute("class", "hide");
+    quizInProgressEl.setAttribute("class", "display");
 
     // Clear `questionTextEl`
-    questionTextEl.innerHTML = "";
+    // questionTextEl.innerHTML = "";
     // Add `questionStatement to `questionTextEl`
-    questionTextEl.innerHTML = questionStatement[questionIndex];
+    // questionTextEl.textContent = questionsObject[questionIndex];
 
-}
+    // Variable for question statement
+    questionTextEl.textContent = questionsObject[questionIndex].question
+    answerBtns.innerHTML = " ";
 
-// Function to display the `answerChoices`
-function displayAnswerChoices() {
-
-    for (var i = 0; i < answerChoices.length; i++) {
+    for (var i = 0; i < questionsObject[questionIndex].choices.length; i++) {
 
         var answerChoiceBtn = document.createElement("button");
-        answerChoiceBtn.textContent = answerChoices[i];
+        // console.log(questionsObject[questionIndex]);
+        // console.log(answerChoices);
+ 
+        answerChoiceBtn.textContent = questionsObject[questionIndex].choices[i];
+        // Registers the click event
+        answerChoiceBtn.onclick =  answerStatus;
         answerBtns.appendChild(answerChoiceBtn);
-        
+        // 
+        questionsObject[questionIndex].answerChoices
     }
 
 }
 
 // Function to start the score timer counting down from 100
-function startScoreTimer(event) {
+function startScoreTimer() {
 
-    var timerInterval = setInterval(function(event) {
+    var timerInterval = setInterval(function() {
         secondsLeft--;
         timerEl.textContent = "Score Timer: " + secondsLeft;
 
@@ -124,60 +106,88 @@ function startScoreTimer(event) {
 }
 
 // When player clicks the `quizStartBtn,` run the functions to:
-// hide the `quizIntroEl`
-quizStartBtn.addEventListener("click", quizIntroDisplay());
 // show the `quizInProgress`
-quizStartBtn.addEventListener("click", quizQuestionDisplay());
-// display the `questionStatement`
-quizStartBtn.addEventListener("click", displayQuestionStatement());
-// display the 'answerChoices`
-quizStartBtn.addEventListener("click", displayAnswerChoices());
+// quizStartBtn.addEventListener("click", displayQuestions;
 // start the `timerInterval`
-quizStartBtn.addEventListener("click", startScoreTimer());
+quizStartBtn.addEventListener("click", function() {
+    displayQuestions();
+    startScoreTimer();
+});
+
 
 
 function answerStatus() {
 
-    event.target.matches("button");
-
-    var clickButtonContent = event.target.textContent;
-
+    console.log(this.textContent);
+    console.log(questionsObject[questionIndex].correctAnswer);
     // If user answers correctly
-    if (clickButtonContent == answerChoices[questionIndex].correctAnswer] {
+    if (this.textContent !== questionsObject[questionIndex].correctAnswer){
         // Add text content to tell user it's incorrect
-        answerStatusEl.innerHTML = "Correct!";
+        answerStatusEl.textContent = "Incorrect";
+        secondsLeft-=15;
 
     // If user answer incorrectly
     } else {
         // Add text content to tell user it's incorrect
-        answerStatusEl.innerHTML = "Incorrect";
-        secondsLeft--;
+        answerStatusEl.textContent = "Correct";
+        
+    }
+
+    // increment the `questionIndex`
+    questionIndex++;
+    quizInProgressEl.testContent = "";
+
+
+    if (questionIndex === questionsObject.length){
+
+        endQuiz();
+
+    } else {
+
+        displayQuestions();
+
     }
 }
 
-function endQuiz(){
+quizInProgressEl.addEventListener("click", answerStatus);
 
-    if (!(i < questions.length - 1)) {
+// function endQuiz(){
 
-    } else (timer = 0) {
+//     if (!(i < questions.length - 1)) {
+
+//     } else (timer = 0) {
             
-    }
+//     }
 
-    clearInterval()
+//     clearInterval()
 
-}
-
-// When player clicks an `answerBtn,` run the functions to:
-// show `answerStatusEl`
-quizInProgressEl.addEventListener("click", answerStatus());
-// increment the `questionIndex`
-questionIndex++;
-// display the `questionStatement`
-quizInProgressEl.addEventListener("click", displayQuestionStatement());
-// display the 'answerChoices`
-quizInProgressEl.addEventListener("click", displayAnswerChoices());
-quizInProgressEl.addEventListener("click", endQuiz());
-
-// function saveHighScore() {
-    
 // }
+
+// // When player clicks an `answerBtn,` run the functions to:
+// // show `answerStatusEl`
+
+// // increment the `questionIndex`
+// questionIndex++;
+// // display the `questionStatement`
+// quizInProgressEl.addEventListener("click", displayQuestionStatement());
+// // display the 'answerChoices`
+// quizInProgressEl.addEventListener("click", displayAnswerChoices());
+// quizInProgressEl.addEventListener("click", endQuiz());
+
+// // function saveHighScore() {
+    
+// // }
+
+// push elements into an array
+// set array = what's in local storage
+//JSON.parse
+var highScore = [
+    {
+    initials: ,
+    score: 
+    }
+]
+
+
+
+
