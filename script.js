@@ -23,8 +23,9 @@ var playerScoresEl = document.getElementById("playerScores");
 var goBackBtn = document.getElementById("goBackBtn");
 var clearScoresBtn = document.getElementById("clearScoresBtn");
 
-// Variable for timer
+// Variable for timer & score
 var secondsLeft = 100;
+var score = 0;
 
 // Variable for question index
 var questionIndex = 0;
@@ -48,6 +49,36 @@ var questionsArray = [
     }
 ]
 
+var timerInterval;
+
+function decrementTimer() {
+
+    timerEl.textContent = "Score Timer: " + secondsLeft;
+
+    if(secondsLeft === 0) {
+
+        clearInterval(timerInterval);
+        endQuiz();
+
+    } else if (questionIndex === questionsArray.length) {
+
+        clearInterval(timerInterval);
+        endQuiz();
+
+    } else 
+
+        displayQuestions();
+        secondsLeft--;
+
+}
+
+// Function to start the score timer counting down from 100
+function startScoreTimer() {
+    
+    timerInterval = setInterval(decrementTimer, 1000, 1);
+
+}
+
 // Function to displays the `questionStatement` and `answerChoices
 function displayQuestions() {
 
@@ -69,31 +100,8 @@ function displayQuestions() {
         // Registers the click event
         answerChoiceBtn.onclick =  answerStatus;
         answerBtns.appendChild(answerChoiceBtn);
-        // 
         questionsArray[questionIndex].answerChoices
     }
-
-}
-
-// Function to start the score timer counting down from 100
-function startScoreTimer() {
-
-    var timerInterval = setInterval(function() {
-        secondsLeft--;
-        timerEl.textContent = "Score Timer: " + secondsLeft;
-
-        if(secondsLeft === 0) {
-
-            clearInterval(timerInterval);
-            endQuiz();
-
-        } else if (questionIndex === questionsArray.length) {
-
-            clearInterval(timerInterval);
-        
-        }
-
-    }, 1000);
 
 }
 
@@ -102,9 +110,9 @@ quizStartBtn.addEventListener("click", function() {
 
     startScoreTimer();
     displayQuestions();
+    decrementTimer();
 
 });
-
 
 function answerStatus() {
 
@@ -113,28 +121,15 @@ function answerStatus() {
         // Add text content to tell user it's incorrect
         answerStatusEl.textContent = "Incorrect";
         secondsLeft-=10;
+        questionIndex++;
 
     // If user answer correctly
     } else {
         // Add text content to tell user it's incorrect
         answerStatusEl.textContent = "Correct";
-        
+        questionIndex++;
     }
 
-    // increment the `questionIndex`
-    questionIndex++;
-    quizInProgressEl.testContent = "";
-
-
-    if (questionIndex === questionsArray.length){
-
-        endQuiz();
-
-    } else {
-
-        displayQuestions();
-
-    }
 }
 
 quizInProgressEl.addEventListener("click", answerStatus);
@@ -149,17 +144,18 @@ function endQuiz() {
 
     questionTextEl.textContent = " ";
     answerStatusEl.textContent = " ";
-    // answerBtns.remove();
+    answerBtns.remove();
 
-    finalScoreEl.textContent = "Your final score is " + secondsLeft
+    score = secondsLeft;
 
+    finalScoreEl.textContent = "Your final score is " + score;
 }
 
 function storePlayerData() {
 
     var playerInitials = initialsEl.value;
     localStorage.setItem("initials", playerInitials);
-    localStorage.setItem("score", secondsLeft);
+    localStorage.setItem("score", score);
 
 }
 
