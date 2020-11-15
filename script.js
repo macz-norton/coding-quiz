@@ -83,8 +83,14 @@ function startScoreTimer() {
         timerEl.textContent = "Score Timer: " + secondsLeft;
 
         if(secondsLeft === 0) {
+
             clearInterval(timerInterval);
             endQuiz();
+
+        } else if (questionIndex === questionsArray.length) {
+
+            clearInterval(timerInterval);
+        
         }
 
     }, 1000);
@@ -98,6 +104,7 @@ quizStartBtn.addEventListener("click", function() {
     displayQuestions();
 
 });
+
 
 function answerStatus() {
 
@@ -140,23 +147,23 @@ function endQuiz() {
     quizInProgressEl.setAttribute("class", "hide");
     quizCompleteEl.setAttribute("class", "display");
 
+    questionTextEl.textContent = " ";
+    answerStatusEl.textContent = " ";
+    // answerBtns.remove();
+
     finalScoreEl.textContent = "Your final score is " + secondsLeft
 
 }
 
-function storeInitials() {
+function storePlayerData() {
 
     var playerInitials = initialsEl.value;
     localStorage.setItem("initials", playerInitials);
+    localStorage.setItem("score", secondsLeft);
 
 }
 
-scoreSubmitBtn.addEventListener("click", storeInitials);
-
-// var leaderboardEl = document.getElementById("leaderboard");
-// var playerScoresEl = document.getElementById("playerScores");
-// var goBackBtn = document.getElementById("goBackBtn");
-// var clearScoresBtn = document.getElementById("clearScoresBtn");
+scoreSubmitBtn.addEventListener("click", storePlayerData);
 
 function createLeaderboard() {
 
@@ -167,53 +174,12 @@ function createLeaderboard() {
     leaderboardEl.setAttribute("class", "display");
 
     var playerInitials = localStorage.getItem("initials");
-    
+    playerScoresEl.appendChild(playerInitials);
 
 }
 
-    // Variable for question statement
-    questionTextEl.textContent = questionsArray[questionIndex].question
-
-    for (var i = 0; i < questionsArray[questionIndex].choices.length; i++) {
-
-        var answerChoiceBtn = document.createElement("button");
- 
-        answerChoiceBtn.textContent = questionsArray[questionIndex].choices[i];
-        // Registers the click event
-        answerChoiceBtn.onclick =  answerStatus;
-        answerBtns.appendChild(answerChoiceBtn);
-        // 
-        questionsArray[questionIndex].answerChoices
-    }
-
-}
-
-// function endQuiz(){
-
-//     if (!(i < questions.length - 1)) {
-
-//     } else (timer = 0) {
-            
-//     }
-
-//     clearInterval()
-
-// }
-
-// // When player clicks an `answerBtn,` run the functions to:
-// // show `answerStatusEl`
-
-// // increment the `questionIndex`
-// questionIndex++;
-// // display the `questionStatement`
-// quizInProgressEl.addEventListener("click", displayQuestionStatement());
-// // display the 'answerChoices`
-// quizInProgressEl.addEventListener("click", displayAnswerChoices());
-// quizInProgressEl.addEventListener("click", endQuiz());
 
 // // function saveHighScore() {
-    
-// // }
 
 // push elements into an array
 // set array = what's in local storage
