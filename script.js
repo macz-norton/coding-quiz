@@ -20,21 +20,17 @@ var scoreSubmitBtn = document.getElementById("scoreSubmitBtn");
 // Variables for quiz leaderboard
 var leaderboardEl = document.getElementById("leaderboard");
 var playerScoresEl = document.getElementById("playerScores");
-var goBackBtn = document.getElementById("gotBackBtn");
+var goBackBtn = document.getElementById("goBackBtn");
 var clearScoresBtn = document.getElementById("clearScoresBtn");
 
 // Variable for timer
 var secondsLeft = 100;
-console.log("Score timer seconds left:")
-console.log(secondsLeft);
 
 // Variable for question index
 var questionIndex = 0;
-console.log("Question index:");
-console.log(questionIndex);
 
 // Variable for questions - with answers and correct answers
-var questionsObject = [
+var questionsArray = [
     {
         "question": "What is the best color?",
         "choices": ["1. red", "2. blue", "3. best", "4. purple"],
@@ -52,9 +48,6 @@ var questionsObject = [
     }
 ]
 
-console.log("Questions Object:")
-console.log(questionsObject);
-
 // Function to displays the `questionStatement` and `answerChoices
 function displayQuestions() {
 
@@ -64,27 +57,20 @@ function displayQuestions() {
     quizIntroEl.setAttribute("class", "hide");
     quizInProgressEl.setAttribute("class", "display");
 
-    // Clear `questionTextEl`
-    // questionTextEl.innerHTML = "";
-    // Add `questionStatement to `questionTextEl`
-    // questionTextEl.textContent = questionsObject[questionIndex];
-
     // Variable for question statement
-    questionTextEl.textContent = questionsObject[questionIndex].question
+    questionTextEl.textContent = questionsArray[questionIndex].question
     answerBtns.innerHTML = " ";
 
-    for (var i = 0; i < questionsObject[questionIndex].choices.length; i++) {
+    for (var i = 0; i < questionsArray[questionIndex].choices.length; i++) {
 
         var answerChoiceBtn = document.createElement("button");
-        // console.log(questionsObject[questionIndex]);
-        // console.log(answerChoices);
  
-        answerChoiceBtn.textContent = questionsObject[questionIndex].choices[i];
+        answerChoiceBtn.textContent = questionsArray[questionIndex].choices[i];
         // Registers the click event
         answerChoiceBtn.onclick =  answerStatus;
         answerBtns.appendChild(answerChoiceBtn);
         // 
-        questionsObject[questionIndex].answerChoices
+        questionsArray[questionIndex].answerChoices
     }
 
 }
@@ -98,35 +84,30 @@ function startScoreTimer() {
 
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
-            // endQuiz();
+            endQuiz();
         }
 
     }, 1000);
 
 }
 
-// When player clicks the `quizStartBtn,` run the functions to:
-// show the `quizInProgress`
-// quizStartBtn.addEventListener("click", displayQuestions;
-// start the `timerInterval`
+// When player clicks the `quizStartBtn,` run the functions to show the `quizInProgress` start the `timerInterval`
 quizStartBtn.addEventListener("click", function() {
-    displayQuestions();
+
     startScoreTimer();
+    displayQuestions();
+
 });
-
-
 
 function answerStatus() {
 
-    console.log(this.textContent);
-    console.log(questionsObject[questionIndex].correctAnswer);
-    // If user answers correctly
-    if (this.textContent !== questionsObject[questionIndex].correctAnswer){
+    // If user answers incorrectly
+    if (this.textContent !== questionsArray[questionIndex].correctAnswer){
         // Add text content to tell user it's incorrect
         answerStatusEl.textContent = "Incorrect";
         secondsLeft-=10;
 
-    // If user answer incorrectly
+    // If user answer correctly
     } else {
         // Add text content to tell user it's incorrect
         answerStatusEl.textContent = "Correct";
@@ -138,7 +119,7 @@ function answerStatus() {
     quizInProgressEl.testContent = "";
 
 
-    if (questionIndex === questionsObject.length){
+    if (questionIndex === questionsArray.length){
 
         endQuiz();
 
@@ -150,6 +131,62 @@ function answerStatus() {
 }
 
 quizInProgressEl.addEventListener("click", answerStatus);
+
+function endQuiz() {
+
+    quizInProgressEl.removeAttribute("class", "display");
+    quizCompleteEl.removeAttribute("class", "hide");
+
+    quizInProgressEl.setAttribute("class", "hide");
+    quizCompleteEl.setAttribute("class", "display");
+
+    finalScoreEl.textContent = "Your final score is " + secondsLeft
+
+}
+
+function storeInitials() {
+
+    var playerInitials = initialsEl.value;
+    localStorage.setItem("initials", playerInitials);
+
+}
+
+scoreSubmitBtn.addEventListener("click", storeInitials);
+
+// var leaderboardEl = document.getElementById("leaderboard");
+// var playerScoresEl = document.getElementById("playerScores");
+// var goBackBtn = document.getElementById("goBackBtn");
+// var clearScoresBtn = document.getElementById("clearScoresBtn");
+
+function createLeaderboard() {
+
+    quizCompleteEl.removeAttribute("class", "display");
+    leaderboardEl.removeAttribute("class", "hide");
+
+    quizCompleteEl.setAttribute("class", "hide");
+    leaderboardEl.setAttribute("class", "display");
+
+    var playerInitials = localStorage.getItem("initials");
+    
+
+}
+
+    // Variable for question statement
+    questionTextEl.textContent = questionsArray[questionIndex].question
+
+    for (var i = 0; i < questionsArray[questionIndex].choices.length; i++) {
+
+        var answerChoiceBtn = document.createElement("button");
+ 
+        answerChoiceBtn.textContent = questionsArray[questionIndex].choices[i];
+        // Registers the click event
+        answerChoiceBtn.onclick =  answerStatus;
+        answerBtns.appendChild(answerChoiceBtn);
+        // 
+        questionsArray[questionIndex].answerChoices
+    }
+
+}
 
 // function endQuiz(){
 
@@ -181,13 +218,9 @@ quizInProgressEl.addEventListener("click", answerStatus);
 // push elements into an array
 // set array = what's in local storage
 //JSON.parse
-var highScore = [
-    {
-    initials: ,
-    score: 
-    }
-]
-
-
-
-
+// var highScore = [
+//     {
+//     initials: ,
+//     score: 
+//     }
+// ]
