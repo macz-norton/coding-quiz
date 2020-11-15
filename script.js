@@ -157,11 +157,10 @@ function storePlayerData() {
     localStorage.setItem("initials", playerInitials);
     localStorage.setItem("score", score);
 
-}
+    scoreSubmitBtn.onclick =  showLeaderboard;
 
-scoreSubmitBtn.addEventListener("click", storePlayerData);
 
-function createLeaderboard() {
+function showLeaderboard() {
 
     quizCompleteEl.removeAttribute("class", "display");
     leaderboardEl.removeAttribute("class", "hide");
@@ -171,11 +170,11 @@ function createLeaderboard() {
 
     var playerInitials = localStorage.getItem("initials");
     playerScoresEl.appendChild(playerInitials);
+}
 
 }
 
-
-// // function saveHighScore() {
+scoreSubmitBtn.addEventListener("click", storePlayerData);
 
 // push elements into an array
 // set array = what's in local storage
