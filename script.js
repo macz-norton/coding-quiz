@@ -124,7 +124,7 @@ function answerStatus() {
     if (this.textContent !== questionsObject[questionIndex].correctAnswer){
         // Add text content to tell user it's incorrect
         answerStatusEl.textContent = "Incorrect";
-        secondsLeft-=15;
+        secondsLeft-=10;
 
     // If user answer incorrectly
     } else {
