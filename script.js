@@ -165,20 +165,18 @@ function endQuiz() {
     finalScoreEl.textContent = "Your final score is " + score;
 }
 
-var initials = initialsEl.value;
-var leaderboard = JSON.parse(localStorage.getItem("playerData")) || [];
+var leaderboard = [];
 
 function storePlayerData() {
 
     var playerData = {
-        playerInitials: initials,
+        playerInitials: document.getElementById("initials").value,
         playerScore: score
     }
 
     console.log(score);
     console.log(initials);
-
-    leaderboard.push(playerData);
+    console.log(playerData);
 
     localStorage.setItem("playerData", JSON.stringify(playerData));
 
@@ -191,13 +189,15 @@ function storePlayerData() {
     quizIntroEl.removeAttribute("class", "display");
     quizIntroEl.setAttribute("class", "hide");
 
+    leaderboard.push(JSON.parse(localStorage.getItem(playerData)));
 
-    for(var j = 0; j < leaderboard.length; i++) {
+    for(var j = 0; j < leaderboard.length; j++) {
 
-        var player = leaderboard[i];
+        var player = leaderboard[j];
 
-        document.createElement("li").innerHTML = player.initials + " " + player.score;
-        document.getElementById("playerScores").appendChild(li);
+        var playerLi = document.createElement("li")
+        playerLi.innerHTML = playerData.playerInitials + " " + score;
+        document.getElementById("playerScores").appendChild(playerLi);
     }
 
 }
@@ -215,3 +215,4 @@ highScoreEl.addEventListener("click", function(event) {
     storePlayerData();
 
 });
+
