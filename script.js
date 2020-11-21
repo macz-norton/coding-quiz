@@ -124,41 +124,38 @@ quizStartBtn.addEventListener("click", function(event) {
     startScoreTimer();
     displayQuestions();
     decrementTimer();
+    console.log(questionsArray);
 
 });
 
 function answerStatus() {
 
+    console.log(questionsArray[questionIndex].correctAnswer);
     // If user answers incorrectly
-    if (this.textContent != questionsArray[questionIndex].correctAnswer){
+    if (this.textContent !== questionsArray[questionIndex].correctAnswer){
         // Add text content to tell user it's incorrect
+        answerStatusEl.setAttribute("class", "display");
         answerStatusEl.setAttribute("src", "https://media.giphy.com/media/cjJe6YP6hj4t8B28fW/giphy.gif");
         secondsLeft-=10;
-        questionIndex++;
+        // questionIndex++;
 
     // If user answer correctly
     } else {
         // Add text content to tell user it's incorrect
+        answerStatusEl.setAttribute("class", "display");
         answerStatusEl.setAttribute("src", "https://media.giphy.com/media/26ufjhvX1rVnMGPUk/giphy.gif");
-        questionIndex++;
+        // questionIndex++;
     }
-
+    questionIndex++;
     setTimeout(clearStatus, 500);
 
 }
 
 function clearStatus() {
 
-    answerStatusEl.removeAttribute("src");
+    answerStatusEl.setAttribute("class", "hide");
 
 }
-
-quizInProgressEl.addEventListener("click", function(event){
-
-    event.preventDefault();
-    answerStatus();
-
-});
 
 function endQuiz() {
 
