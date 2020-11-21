@@ -36,28 +36,26 @@
         </div>
 
         <!-- Quiz in progress page where player selects answer button and answer status shown -->
-        <div class="hide" id="quizInProgress"></div>
+        <div class="hide" id="quizInProgress">
             <!-- Question text -->
             <h2 id="questionText"></h2>
             <!-- Answer choices -->
             <div id="answers"></div>
             <!-- Answer status appears - either correct or incorrect -->
-            <div>
-                <h3 id="answerStatus"></h3>
-            </div>
-
+            <img id="answerStatus"></img>
         </div>
 
         <!-- Quiz completion page where player's score is show and they're prompted to enter their initials -->
         <div class="hide" id="quizComplete">
             <h2>All done!</h2>
             <!-- Player's quiz score -->
+            <img id="finalImg" src="https://media.giphy.com/media/Jnva78n6OJWK5GNrw5/giphy.gif" alt="Illustration of Ruth Bader Ginsburg">
             <p id="finalScore"></p>
             <!-- Form for player to enter initials to submit to leaderboard -->
             <form>
                 <label for="initialsField">Enter initials:</label>
                 <input type="text" id="initials" name="initialsField">
-                <button class=" mainBtn" id="scoreSubmitBtn">Submit Score</button>
+                <button class="mainBtn" id="scoreSubmitBtn">Submit Score</button>
             </form>
         </div>
 

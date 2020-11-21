@@ -107,11 +107,12 @@ function displayQuestions() {
 
         var answerChoiceBtn = document.createElement("button");
  
+        answerChoiceBtn.classList.add("mainBtn");
         answerChoiceBtn.textContent = questionsArray[questionIndex].choices[i];
         // Registers the click event
         answerChoiceBtn.onclick =  answerStatus;
         answerBtns.appendChild(answerChoiceBtn);
-        questionsArray[questionIndex].answerChoices
+        questionsArray[questionIndex].answerChoices;
     }
 
 }
@@ -129,16 +130,16 @@ quizStartBtn.addEventListener("click", function(event) {
 function answerStatus() {
 
     // If user answers incorrectly
-    if (this.textContent !== questionsArray[questionIndex].correctAnswer){
+    if (this.textContent != questionsArray[questionIndex].correctAnswer){
         // Add text content to tell user it's incorrect
-        answerStatusEl.textContent = "Incorrect";
+        answerStatusEl.setAttribute("src", "https://media.giphy.com/media/cjJe6YP6hj4t8B28fW/giphy.gif");
         secondsLeft-=10;
         questionIndex++;
 
     // If user answer correctly
     } else {
         // Add text content to tell user it's incorrect
-        answerStatusEl.textContent = "Correct";
+        answerStatusEl.setAttribute("src", "https://media.giphy.com/media/26ufjhvX1rVnMGPUk/giphy.gif");
         questionIndex++;
     }
 
@@ -148,7 +149,7 @@ function answerStatus() {
 
 function clearStatus() {
 
-    answerStatusEl.textContent = " ";
+    answerStatusEl.removeAttribute("src");
 
 }
 
@@ -156,6 +157,7 @@ quizInProgressEl.addEventListener("click", function(event){
 
     event.preventDefault();
     answerStatus();
+
 });
 
 function endQuiz() {

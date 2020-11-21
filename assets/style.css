@@ -23,7 +23,7 @@ header {
 main {
     justify-content: center;
     margin: 0 auto;
-    width: 50%;
+    width: 75%;
 }
 
 h1 {
@@ -49,6 +49,11 @@ p {
     color: var(--black);
 }
 
+.quizIntroDisplay {
+    display: flex;
+    justify-content: center;
+}
+
 .mainBtn {
 	background-color: var(--white);
 	border-radius: 25px;
@@ -62,9 +67,9 @@ p {
     background-color: var(--blue);
 }
 
-.myButton:active {
+.mainBtn:active {
 	position:relative;
-	top:1px;
+    top:1px;
 }
 
 .display {
@@ -73,4 +78,12 @@ p {
 
 .hide {
     display: none;
+}
+
+
+#finalImg,
+#answerStatus {
+    width: 150px;
+    height: 150px;
+    border: none;
 }
