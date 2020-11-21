@@ -148,8 +148,6 @@ quizInProgressEl.addEventListener("click", function(event){
     answerStatus();
 });
 
-
-
 function endQuiz() {
 
     quizInProgressEl.removeAttribute("class", "display");
@@ -167,18 +165,22 @@ function endQuiz() {
     finalScoreEl.textContent = "Your final score is " + score;
 }
 
+var initials = initialsEl.value;
+var leaderboard = JSON.parse(localStorage.getItem("playerData")) || [];
+
 function storePlayerData() {
 
-    var playerInitials = initialsEl.value;
-    localStorage.setItem("initials", playerInitials);
-    localStorage.setItem("score", score);
+    var playerData = {
+        playerInitials: initials,
+        playerScore: score
+    }
 
-    showLeaderboard();
+    console.log(score);
+    console.log(initials);
 
-    // scoreSubmitBtn.onclick =  showLeaderboard;
-}
+    leaderboard.push(playerData);
 
-function showLeaderboard() {
+    localStorage.setItem("playerData", JSON.stringify(playerData));
 
     quizCompleteEl.removeAttribute("class", "display");
     leaderboardEl.removeAttribute("class", "hide");
@@ -189,14 +191,14 @@ function showLeaderboard() {
     quizIntroEl.removeAttribute("class", "display");
     quizIntroEl.setAttribute("class", "hide");
 
-    // var playerData = {
-    //     initials:,
-    //     score:
-    // }
 
-    var playerInitials = localStorage.getItem("initials");
-    console.log(playerInitials);
-    // playerScoresEl.appendChild(playerInitials);
+    for(var j = 0; j < leaderboard.length; i++) {
+
+        var player = leaderboard[i];
+
+        document.createElement("li").innerHTML = player.initials + " " + player.score;
+        document.getElementById("playerScores").appendChild(li);
+    }
 
 }
 
@@ -204,36 +206,12 @@ scoreSubmitBtn.addEventListener("click", function(event) {
 
     event.preventDefault();
     storePlayerData();
+
 });
-// scoreSubmitBtn.addEventListener("click", showLeaderboard);
 
 highScoreEl.addEventListener("click", function(event) {
 
     event.preventDefault();
-    showLeaderboard();
+    storePlayerData();
+
 });
-
-// push elements into an array
-// set array = what's in local storage
-//JSON.parse
-// var highScore = [
-//     {
-//     initials: ,
-//     score: 
-//     }
-// ]
-
-
-// // In the global scope
-// // Try to get a value out of localStorage.
-// var storedCitiesJSON = localStorage.getItem("searchedCities");
-// // If we have a saved value, we'll need to parse the JSON to get our real array. Otherwise, initialize `savedCities` as an empty array.
-// var savedCities = storedCities ? JSON.parse(storedCities) : [];
-// // THEN in your search
-// function search(event) {
-//   // Your code to get the input value and do anything else you need to do
-//   // Push the new city to your list of savedCities
-//   savedCities.push(city);
-//   // Save the updated list to localStorage
-//   localStorage.setItem(JSON.stringify(savedCities));
-// }
