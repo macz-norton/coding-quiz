@@ -178,6 +178,8 @@ function storePlayerData() {
     console.log(initials);
     console.log(playerData);
 
+    leaderboard.push(JSON.parse(localStorage.getItem("playerData")));
+
     localStorage.setItem("playerData", JSON.stringify(playerData));
 
     quizCompleteEl.removeAttribute("class", "display");
@@ -189,15 +191,15 @@ function storePlayerData() {
     quizIntroEl.removeAttribute("class", "display");
     quizIntroEl.setAttribute("class", "hide");
 
-    leaderboard.push(JSON.parse(localStorage.getItem(playerData)));
-
     for(var j = 0; j < leaderboard.length; j++) {
 
         var player = leaderboard[j];
 
         var playerLi = document.createElement("li")
-        playerLi.innerHTML = playerData.playerInitials + " " + score;
-        document.getElementById("playerScores").appendChild(playerLi);
+        playerLi.innerHTML = player.playerInitials + " " + player.playerScore;
+        document.getElementById("playerScores").append(playerLi);
+        console.log(playerLi);
+        playerData++
     }
 
 }
@@ -216,3 +218,15 @@ highScoreEl.addEventListener("click", function(event) {
 
 });
 
+goBackBtn.addEventListener("click", function(event) {
+
+    window.location.reload();
+
+});
+
+clearScoresBtn.addEventListener("click", function(event) {
+
+    playerScoresEl.innerHTML = "";
+    window.localStorage.clear();
+
+});
