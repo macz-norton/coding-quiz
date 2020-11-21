@@ -34,19 +34,29 @@ var questionIndex = 0;
 // Variable for questions - with answers and correct answers
 var questionsArray = [
     {
-        "question": "What is the best color?",
-        "choices": ["1. red", "2. blue", "3. best", "4. purple"],
-        "correctAnswer": "3. best"
+        "question": "Where was RBG born?",
+        "choices": ["Milwaukee, Wisconsin", "Atlanta, Georgia", "Brooklyn, New York", "San Francisco, California"],
+        "correctAnswer": "Brooklyn, New York"
     },
     {
-        "question": "Who?",
-        "choices": ["1. bob", "2. joe", "3. mary", "4. jill"],
-        "correctAnswer": "2. joe"
+        "question": "What instrument did RBG play while she was in school?",
+        "choices": ["Trumpet", "Cello", "Flute", "Saxophone"],
+        "correctAnswer": "Cello"
     },
     {
-        "question": "How?",
-        "choices": ["1. car", "2. boat", "3. bus", "4. bike"],
-        "correctAnswer": "1. car"
+        "question": "What law school did RBG attend for her last year of law school?",
+        "choices": ["Columbia University", "Harvard Law School", "Stanford Law School", "Yale Law School"],
+        "correctAnswer": "Columbia University"
+    },
+    {
+        "question": "What year was RBG sworn into the Supreme Court?",
+        "choices": ["1990", "1991", "1992", "1993"],
+        "correctAnswer": "1993"
+    },
+    {
+        "question": "Where did RBG serve as the director of the Women’s Rights Project?",
+        "choices": ["ACLU", "The Bronx Defenders", "The Innocence Project", "Legal Aid of Maryland"],
+        "correctAnswer": "ACLU"
     }
 ]
 
