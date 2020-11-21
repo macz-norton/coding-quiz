@@ -1,14 +1,16 @@
 :root {
-    --darkblue: #034AA6;
-    --mediumblue: #0476D9;
-    --lightblue: #05AFF2;
-    --mustard: #F2B705;
-    --orange: #F29F05;
+    --gray: #D4D6D2;
+    --black: #18181A;
+    --white: #ffffff;
 }
 
 * {
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Merriweather', serif;
+}
+
+body {
+    background-color: var(--gray);
 }
 
 header {
@@ -24,10 +26,45 @@ main {
     width: 50%;
 }
 
-h1,
-h2,
+h1 {
+    font-weight: bolder;
+    text-align: center;
+    font-size: 50px;
+    color: var(--black);
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 25px;
+    color: var(--black);
+}
+
 h3 {
-    color: var(--darkblue);
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--black);
+}
+
+p {
+    color: var(--black);
+}
+
+.mainBtn {
+	background-color: var(--white);
+	border-radius: 25px;
+	font-size:15px;
+    padding:5px 15px;
+    align-content: center;
+	text-decoration: none;
+}
+
+.mainBtn:hover {
+    background-color: var(--blue);
+}
+
+.myButton:active {
+	position:relative;
+	top:1px;
 }
 
 .display {

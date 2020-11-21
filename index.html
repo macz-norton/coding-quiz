@@ -4,17 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Quiz</title>
+    <title>Notorious RBG Trivia</title>
     <!-- Link to CSS reset stylesheet -->
     <link rel="stylesheet" href="assets/normalize.css">
     <!-- Link to CSS stylesheet -->
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Merriweather">
+    
+
 </head>
 
 <body>
     <!-- Header with link to the High Scores page and score timer  -->
     <header>
-        <h3><a href="#" id="highScore">View High Scores</a></h3>
+        <a href="#" id="highScore"></a>
+        <h3>View High Scores</a></h3>
         <h3 id="scoreTimer"></h3>
     </header>
     
@@ -23,11 +28,11 @@
 
         <!-- Quiz intro page where player clicks Start Quiz button to begin quiz and score timer -->
         <div class="display" id="quizIntro">
-            <h1>Coding Quiz Challenge</h1>
-            <p>Try to answer the following code-related questions within the time limit.</p>
-            <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <h1>Notorious RBG Trivia</h1>
+            <h2>Test your knowledge about the Honorable Ruth Bader Ginsburg!</h2>
+            <h3>Keep in mind that incorrect answers will penalize your score/time by ten seconds.</h3>
             <!-- Button for player to start quiz -->
-            <button id="quizStartBtn">Start Quiz</button>
+            <button class="mainBtn" id="quizStartBtn">Start Quiz</button>
         </div>
 
         <!-- Quiz in progress page where player selects answer button and answer status shown -->
@@ -52,7 +57,7 @@
             <form>
                 <label for="initialsField">Enter initials:</label>
                 <input type="text" id="initials" name="initialsField">
-                <button id="scoreSubmitBtn">Submit Score</button>
+                <button class=" mainBtn" id="scoreSubmitBtn">Submit Score</button>
             </form>
         </div>
 
@@ -61,9 +66,9 @@
             <h2>High Scores</h2>
             <div id="playerScores"></div>
             <!-- Button to redirect to quiz intro page -->
-            <button id="goBackBtn">Go Back</button>
+            <button class="mainBtn" id="goBackBtn">Go Back</button>
             <!-- Button to clear the leaderboard of any high scores -->
-            <button id="clearScoresBtn">Clear High Scores</button>
+            <button class="mainBtn" id="clearScoresBtn">Clear High Scores</button>
         </div>
 
     </main>
