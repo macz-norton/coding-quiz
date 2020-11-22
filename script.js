@@ -147,7 +147,7 @@ function answerStatus() {
         // questionIndex++;
     }
     questionIndex++;
-    setTimeout(clearStatus, 500);
+    setTimeout(clearStatus, 1000);
 
 }
 
