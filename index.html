@@ -18,8 +18,7 @@
 <body>
     <!-- Header with link to the High Scores page and score timer  -->
     <header>
-        <a href="#" id="highScore"></a>
-        <h3>View High Scores</a></h3>
+        <h3 id="highScore"><a href="#" id="highScore">View High Scores</a></h3>
         <h3 id="scoreTimer"></h3>
     </header>
     
@@ -32,7 +31,9 @@
             <h2>Test your knowledge about the Honorable Ruth Bader Ginsburg!</h2>
             <h3>Keep in mind that incorrect answers will penalize your score/time by ten seconds.</h3>
             <!-- Button for player to start quiz -->
-            <button class="mainBtn" id="quizStartBtn">Start Quiz</button>
+            <div class="buttonContainer">
+                <button class="mainBtn" id="quizStartBtn">Start Quiz</button>
+            </div>
         </div>
 
         <!-- Quiz in progress page where player selects answer button and answer status shown -->
